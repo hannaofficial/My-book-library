@@ -1,0 +1,248 @@
+<%- include( '/home/hannanur117/A_Project/My_Book_Collection/ejs/partials/header.ejs') %>
+<div class="header" id="top_menu">
+    <div class="top_bar" id="top_bar">
+        <div id="logo">
+         <h2>
+            <span class="title">MY</span>Lib
+         </h2>
+        
+        </div>
+        <div id="menu_button">
+            <form>
+              <button type="submit" class="button" id="read_button">Read</button>
+            </form>
+            <form>
+              <button type="submit" class="button" id="unread_button">About</button>
+            
+        </div>
+    </div>
+</div>
+<div class="main_container">
+    <div class="left_container" id="left_container" >
+       <% for(let book of  books ){%>
+        
+            <div class="each_box" id="each_box<%= book.id %>">
+                <div class="book_images">
+                    <img class="book_img" src="<%= book.img_url %>" alt="book_img">
+                </div>
+                <div class="book_details">
+                    <div class="book_div">
+                        <p class="book_title">
+                            <%= book.title %> 
+                        </p>
+                        
+                    </div>
+                    <div class="author_div ">
+                        <p class="author">
+                            Author: <%= book.author %>
+                        </p>
+                    </div> 
+                    <div class="span_div ">
+                        <span><%=book.pages %> Pages </span><span>| Reading status: <%= book.reading %></span>
+                        
+                    </div>
+                </div>
+                <div class="edit_button" id="edit_<%= book.id %>">
+                    
+                        <button id="edit<%= book.id %>" class="edit" >✎..</button>
+                        <form action="/del" method="POST">
+                            <button type="submit" name="id" value="<%= book.id %>">Del</button>
+                        </form>
+                </div>  
+            </div>
+            <div id="editDialog<%= book.id %>" class="dialog" style="display:none;" > 
+                <form class="update " action="/update" method="POST">
+                    <div class="label_style"> 
+                        <div class="label">
+                            <label for="Title">Title: </label>
+                            <label for="Author">Author: </label>
+                            <label for="pages">Pages: </label>
+                            <label for="images">Image: </label>
+                            <label for="images">rating: </label>
+                            
+                            
+                        </div>
+                        <div class="input_dialog">
+                            <input type="text" name="title" id="Title" value="<%= book.title %>" placeholder="Enter Book title here" >
+                            <input type="text" name="author" id="Author" value="<%= book.author %>" placeholder="Enter author name here" >
+                            <input type="text" name="pages" id="pages" value="<%= book.pages %>" placeholder="Enter page no. here" >
+                            <input type="text" name="images" id="images" placeholder="Enter Image URL here" value="<%= book.img_url %>">
+                            <input type="text" name="rating" id="rating" placeholder="Give rating" value="<%= book.rating %>">
+                            <input type="hidden" name="id" id="id"  value="<%= book.id %>">
+                        </div >
+                </div>
+                <div  class="image_button_form">
+                        <div class="api_image edit_image_class">
+                            <img class="api_pic edit_image" src="<%= book.img_url %>">
+                        </div>
+        
+                        <div class="dialog_status_update">
+                            <label class="label_status" for="status">Status:</label>
+                            <select id="status" name="reading_status">
+                                <option value="read">read</option>
+                                <option value="reading">reading</option>
+                                <option value="will read">will read</option>
+                            </select>
+                        
+                            <button class="update_button" type="submit">Done</button>
+                            <button type="button" id="close<%= book.id %>" class="close_dialog">Close</button>
+                        </div>
+                    </div>
+                    
+                </form> 
+            
+            
+            </div>
+                
+        
+          
+        
+         <% } %>
+
+    </div>
+    
+        
+    <div class="right_container" id="right_container">
+     <div>   
+        <p>
+            Search book you want to add
+            
+        </p>
+      </div>
+      <div>
+        <form class="search" action="/search" method="POST">
+            <input type="text"  name="search_book" id="search_input" placeholder="Search book here 📚" >
+            <button type="submit" class="search_button" id="search_button"><img class="search_icon" src="https://cdn.iconscout.com/icon/free/png-256/free-search-1768073-1502246.png"></button>
+        </form>
+      </div>
+     <%if(locals.Data) {%>
+      <div class="api_info">  
+        <form class="search_details" action="/data" method="POST">
+            <div class="label_style"> 
+                <div class="label">
+                    <label for="Title">Title: </label>
+                    <label for="Author">Author: </label>
+                    <label for="pages">Pages: </label>
+                    <label for="images">Image: </label>
+                    <label for="images">rating: </label>
+                    
+                    
+                </div>
+                <div class="input">
+                    <input type="text" name="title" id="Title" value="<%= Title %>" placeholder="Enter Book title here" >
+                    <input type="text" name="author" id="Author" value="<%= Author %>" placeholder="Enter author name here" >
+                    <input type="text" name="pages" id="pages" value="<%= Pages %>" placeholder="Enter page no. here" >
+                    <input type="text" name="images" id="images" placeholder="Enter Image URL here" value="<%= ImageUrl %>">
+                    <input type="text" name="rating" id="rating" placeholder="Give rating" value="<%= Rating %>">
+                </div >
+             </div>
+            
+            <div class="api_image">
+                <img class="api_pic" src="<%= ImageUrl %>">
+            </div>
+
+
+            <label for="reading_status">Reading status:</label>
+            <select id="reading_status" name="reading_status">
+                <option value="read">read</option>
+                <option value="reading">reading</option>
+                <option value="will read">will read</option>
+            </select>
+            
+            <button type="submit">Add</button>
+            
+        </form> 
+      </div>
+     <% } %>
+     <% if (locals.notFound){ %> 
+        <div id="not_found" class="not_found">
+          
+          
+            <%=notFound %>
+            
+            <form class="manual" action="/manual" method="POST">
+                
+                <button type="submit" class="manual" id="manual_button">Add manually</button>
+            </form>
+
+        </div>
+        <% } %>  
+     <% if (locals.error){ %> 
+      <div id="tag-error" class="tag-error">
+        
+        
+          <%=console.error(); %>
+      </div>
+      <% } %>
+      <p class="footer" id="footer">Created by Hanna</p> 
+      <img class="boy_img" src="img/boy.svg">  
+    </div>
+
+</div>
+
+       
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+<script>
+    console.log("scripting")
+
+    
+    const editButtons = document.querySelectorAll('.edit');
+
+    editButtons.forEach(button => {
+    button.addEventListener('click', (event) => {
+        console.log("1")
+        var buttonId = event.target.id;
+        console.log("2")
+        var dialog = document.getElementById('editDialog' + buttonId.replace('edit', ''));
+        console.log("3")
+
+        var editButtonRect = button.getBoundingClientRect();
+        console.log("4")
+        
+        
+        
+        dialog.style.display = 'block';
+        console.log("5")
+        dialog.style.position = 'absolute';
+        dialog.style.left = `${editButtonRect.left - 110 - window.scrollY}px`; 
+        dialog.style.top = `${editButtonRect.bottom + window.scrollY+130}px`;
+        
+        
+
+        const handleOutsideClick = (event) => {
+            if (event.target!==button && !dialog.contains(event.target)) {
+                dialog.style.display = 'none';
+                console.log(dialog.style.display)
+                console.log("6")
+                document.removeEventListener('click', handleOutsideClick);
+                console.log("7")
+            }
+        };
+
+            setTimeout(() => {
+                document.addEventListener('click', handleOutsideClick);
+            }, 10);
+            console.log("8")
+        });
+    });
+
+    const closes = document.querySelectorAll(".close_dialog");
+    closes.forEach(close => {
+            close.addEventListener('click', (event) => {
+                var closeId = event.target.id;
+                console.log("9")
+                var dialog = document.getElementById('editDialog' + closeId.replace('close', ''));
+                console.log("10")
+                dialog.style.display = 'none';
+                console.log("11")
+            });
+        });
+
+        
+</script>
+
+
+<%- include('/home/hannanur117/A_Project/My_Book_Collection/ejs/partials/footer.ejs') %>

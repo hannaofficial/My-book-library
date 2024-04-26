@@ -1,0 +1,366 @@
+html{
+    background-color: #ddd;
+}
+body{
+  margin:0px;
+}
+
+main {
+    text-align: center;
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: stretch;
+    min-height: 75vh;
+    
+    margin: 0%;
+  }
+
+ .header{
+  position: -webkit-sticky;
+  position:sticky;
+  top:0px;
+  background-color: #ffffff;
+  margin-top: 0px;
+  box-shadow: 5px 5px 7px -5px rgba(0, 0, 0, 0.1);
+  
+ } 
+ 
+  .top_bar {
+    display: flex;  
+    justify-content: center; 
+    text-align: center;
+    padding: 7px;
+    }
+  
+  
+  #logo h2 {
+    margin: 0; 
+    color: rgb(10, 196, 177);
+    font-size: 35px;
+    font-family: 'Courier New', Courier, monospace;
+  }
+  .title{
+    color: rgb(152, 16, 16);
+  }
+  #logo{
+    flex-basis: 20%;
+  }
+  #menu_button{
+    flex-basis: 45%;
+    justify-items: end;
+  }
+  
+ 
+  #menu_button form {
+    display: inline-block; 
+    margin-right: 10px; 
+  }
+  
+  .button {
+    background-color: #0676c7;
+    color: white;
+   
+    min-height: 30px;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 15px;
+    
+  }
+  
+
+  .main_container{
+    display:flex;
+    height: 85vh;
+    gap: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    justify-content: center;
+    
+  }
+   
+  .each_box{
+    height: fit-content;
+    background-color: #ffffff;
+    text-align: left;
+    padding: 10px;
+    border-radius: 7px;
+    box-shadow: 5px 4px 8px -5px rgba(0, 0, 0, 0.3);
+    display: flex;
+    justify-content: left;
+    
+    
+  }
+  .each_box:hover {
+    
+    box-shadow: 0px 0px 4px 1px rgb(6, 55, 250);
+    transition: all 0.6s ease; 
+ } 
+  .book_details{
+    
+    padding-left: 5px;
+  }
+  
+  .author{
+    margin: 1px;
+    font-size: 11px;
+    font-family: "Roboto Mono", monospace;
+  }
+  .span_div span{
+    font-size: 10px;
+    font-family: "Roboto Mono", monospace;
+   }
+   .edit_button {
+    margin-left: auto; 
+  } 
+  .book_title{
+    margin-top: 0px ;
+    
+  }
+  .book_img{
+    height: 70px;
+    width:50px ;
+    border: 1px solid #d1cece;
+    border-radius: 5px;
+  }
+  .search_icon{
+    height: 15px;
+    
+    
+  }
+  .search_button{
+    min-height: 15px;
+    padding-top: 4px;
+    margin-left: 4px;
+    border: 1px solid #090909;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 15px;
+    
+  }
+  .search_button:hover{
+    border: 1px solid rgb(6, 55, 250);
+    
+  }
+  .search{
+    display: flex;
+    
+    justify-content: center;
+  }
+  #search_input{
+    border-radius: 0px;
+  }
+  #search_input:hover{
+    box-shadow: 0px 0px 4px 1px rgb(6, 55, 250);
+    transition: all 0.6s ease; 
+  }
+  input[type="text"]:focus {
+    outline: none;
+    box-shadow: 0px 0px 1px 1px rgb(0, 102, 255);  
+} 
+ 
+  .api_info{
+    margin-top: 15px;
+    margin-left: 15px;
+  }
+  .left_container{
+    flex-basis: 40%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;    
+    overflow-y: auto;
+    width: auto;
+    height: 85vh;
+    scrollbar-width: none; 
+ 
+  }
+  .right_container{
+    
+    flex-basis: 25%;
+    position: sticky;
+    top: 70px;  
+    right:90px ;
+    width: 300px;
+    height: 100%;
+    width: auto;
+    overflow-y: auto;
+    
+    
+  }
+  
+
+  
+
+.label_style{
+  display: flex;
+}
+.label{
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  font-family: monospace;
+  font-weight: bold;
+  }
+
+.api_info input{
+  border: 0px;
+  background-color: #ddd;
+  margin: 0px;
+  padding: 0px;
+  font-family: monospace;
+}
+.api_image{
+  padding: 8px;
+  text-align: left;
+}
+.api_pic{
+  height: 120px;
+  width:100px;
+  border: 1px solid rgb(10, 104, 187);
+  border-radius: 5px;
+}
+.not_found{
+  padding: 20px;
+}
+.manual{
+  padding: 10px;
+}
+.manual button{
+  background-color: #e0e0e0; 
+  border: 1px solid #777777;  
+  color: #333333;             
+  padding: 10px 20px;         
+  text-decoration: none;      /* Remove underline (if needed) */
+  cursor: pointer;            
+  border-radius: 3px; 
+  
+}
+.manual button:hover {
+  background-color: #c0c0c0;
+}
+
+.dialog {
+  max-width: 250px;
+  transform: translate(-50%, -50%); 
+  background-color: white;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3); 
+}
+
+.input_dialog{
+  display: flex;
+  flex-direction: column;
+}
+
+.dialog form {
+  max-width: 80%; 
+  margin-right: 0px;
+  margin-left: 0px;
+ 
+  padding: 5px; 
+  box-sizing: border-box; 
+}
+
+.dialog .input_dialog input,
+.dialog .input_dialog select {
+  height: 20px; 
+  padding: 5px; 
+  margin-top: 3px;
+  box-sizing: border-box; 
+}
+.dialog  select{
+  margin-bottom: 5px;
+}
+
+.dialog .label_style {
+  font-size: 0.8rem; 
+}
+
+
+.dialog button {
+  padding: 4px 6px; 
+  font-size: 0.75rem;
+  width: auto; 
+  }
+
+.dialog .api_pic{
+    height: 80px;
+    width:60px;
+    border: 1px solid rgb(10, 104, 187);
+    border-radius: 5px;
+  }
+  .image_button_form{
+    display: flex;
+    justify-content: center;
+  }
+  .dialog_status_update{
+    margin: auto;
+  }
+
+  .boy_img{
+    position: absolute;
+    height: 200px;
+    left: 160px;
+    bottom: 0px;
+    filter: brightness(0.8) saturate(1.5) hue-rotate(100deg);
+    
+    
+  }
+
+  .footer{
+    width: 190px;
+    position: absolute;
+    color: rgb(37, 53, 35);
+    font-family:"Cedarville Cursive", cursive;
+    font-style: normal;
+    font-size: 1rem;
+    right: 140px;
+    bottom: 30px;
+  }
+  .foot{
+    position: fixed;
+    right: 230px;
+    bottom: 5px ;
+    
+    width: auto;
+    display: flex;
+    
+    justify-content: space-between;
+    align-items: center;
+    
+    
+  }
+
+  @media (max-width: 1024px) {
+    .right_container {
+        width: 200px;  
+    }
+    .footer{
+      left: 500px;
+      
+      font-size: 1.2rem;
+
+    }
+
+}
+
+@media (max-width: 768px) {
+    .right_container {
+        width: 150px;  
+    }
+    
+    
+}
+
+@media (max-width: 480px) {
+    .right_container {
+        position: static;  
+        width: 100%;  
+        height: auto;  
+    }
+}
+
